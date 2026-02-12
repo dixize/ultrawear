@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULTRA WEAR | Streetstyle Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black text-white font-sans selection:bg-indigo-500">
+
+    <header class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="text-2xl font-black tracking-tighter cursor-pointer" onclick="showPage('home')">
+                ULTRA<span class="text-indigo-500">WEAR</span>
+            </div>
+            <div class="relative cursor-pointer" onclick="showPage('cart')">
+                <i class="fa-solid fa-bag-shopping text-xl"></i>
+                <span id="cart-count-badge" class="absolute -top-2 -right-2 bg-indigo-600 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="page-home" class="page-section pt-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12">
+                <h1 class="text-5xl font-black mb-4 tracking-tight">NEW<br>COLLECTION</h1>
+                <p class="text-gray-400 max-w-sm">Эксклюзивная одежда и обувь от лучших стритвир брендов мира.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 mb-12">
+                <div class="cat-card active-cat" onclick="renderProducts('Shoes')">
+                    <i class="fa-solid fa-shoe-prints mb-2 text-xl"></i>
+                    <span>ОБУВЬ</span>
+                </div>
+                <div class="cat-card" onclick="renderProducts('Tshirts')">
+                    <i class="fa-solid fa-shirt mb-2 text-xl"></i>
+                    <span>ФУТБОЛКИ</span>
+                </div>
+                <div class="cat-card" onclick="renderProducts('Pants')">
+                    <i class="fa-solid fa-person-dots-from-line mb-2 text-xl"></i>
+                    <span>ШТАНЫ</span>
+                </div>
+                <div class="cat-card" onclick="renderProducts('Accs')">
+                    <i class="fa-solid fa-hat-cowboy mb-2 text-xl"></i>
+                    <span>АКСЕССУАРЫ</span>
+                </div>
+            </div>
+
+            <div id="products-list" class="grid grid-cols-2 md:grid-cols-4 gap-4 pb-24">
+                </div>
+        </div>
+    </main>
+
+    <div id="page-item" class="page-section hidden pt-32 px-6">
+        <div id="product-detail-container"></div>
+    </div>
+
+    <div id="page-cart" class="page-section hidden pt-32 px-6 pb-24">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-3xl font-black mb-8">КОРЗИНА</h2>
+            <div id="cart-full-list" class="space-y-4 mb-8"></div>
+            
+            <div class="bg-[#111] p-6 rounded-[32px] border border-white/5 space-y-4">
+                <input id="order-name" type="text" placeholder="Ваше имя" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-indigo-500">
+                <input id="order-phone" type="tel" placeholder="Телефон" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-indigo-500">
+                <input id="cart-city" type="text" placeholder="Город доставки" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-indigo-500">
+                
+                <div class="flex gap-2">
+                    <input id="promo-input" type="text" placeholder="Промокод" class="flex-grow bg-white/5 border border-white/10 rounded-xl p-4 outline-none">
+                    <button onclick="applyPromo()" class="bg-indigo-600 px-6 rounded-xl font-bold">OK</button>
+                </div>
+                <p id="promo-msg" class="text-xs font-bold text-green-500 px-2"></p>
+
+                <div class="pt-4 border-t border-white/5 flex justify-between items-end">
+                    <div>
+                        <p class="text-gray-500 text-xs uppercase font-bold tracking-widest">Итого к оплате</p>
+                        <div id="final-price" class="text-4xl font-black italic">0 ₽</div>
+                    </div>
+                    <button onclick="checkout()" class="bg-white text-black px-8 py-4 rounded-2xl font-black hover:bg-indigo-500 hover:text-white transition">ОФОРМИТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
